@@ -13,14 +13,26 @@ import { useState, useEffect } from 'react'
 import img4 from "../images/images.jpg"
 import FeatureSection from '../components/FeatureSection'
 import VerticalComponent from '../components/VerticalComponent'
+import Explore from '../components/Explore'
+import pics1 from "../images/features.png"
+import pics2 from "../images/template.png"
+import pics3 from "../images/productivity.png"
+import pics4 from "../images/extension.png"
+import pics5 from "../images/inspiration.png"
+import SlickCarousel from '../components/SlickCarousel'
+import "../style/style.css"
+import Navbar from "../components/Navbar"
+import Footer from "../components/Footer"
 
 const Home = () => {
   const [scrollY, setScrollY] = useState(0);
 
   const handleScroll = () => {
-    setScrollY(window.scrollY);
+    const currentScroll = window.scrollY;
+    if (currentScroll < 700) {
+      setScrollY(currentScroll);
+    }
   };
-
   const translateY = Math.min(-scrollY, 200);
 
   useEffect(() => {
@@ -31,6 +43,7 @@ const Home = () => {
   }, []);
   return (
     <>
+    <Navbar/>
       <div className='text-center'>
         <h1 className=' mt-36 text-7xl font-bold text-gray-800'>Organize your work<br />and life, finally.</h1>
         <p className='mt-8 mb-8 text-xl font-semibold text-gray-600'>
@@ -56,7 +69,7 @@ const Home = () => {
       </div>
       <div className='flex justify-between mx-20 my-20'>
 
-<div className=''>
+<div className='mt-48 mb-72'>
        <FeatureSection
        title="Clear your mind"
        subtitle={
@@ -67,11 +80,11 @@ const Home = () => {
         </>
       }
        discription={
-        <>
+        <div className='mb-96'>
         Type just about anything into the task field and<br/>
          Todoist’s one-of-its-kind natural language<br/>
           recognition will instantly fill your to-do list.
-        </>
+        </div>
        }
        />
        <FeatureSection
@@ -84,11 +97,11 @@ const Home = () => {
             </>
           }
           discription={
-            <>
+            <div className='mb-96'>
             Your tasks are automatically sorted into Today,<br/>
             Upcoming, and custom Filter views to help you<br/>
             prioritize your most important work.
-            </>
+            </div>
            }
        />
        <FeatureSection
@@ -117,6 +130,54 @@ const Home = () => {
       <p className='text-2xl mb-20 font-bold text-center'>– The Verge</p>
 
       <VerticalComponent/>
+      <p className='text-3xl  mt-28 font-bold text-center'>Explore all Todoist has to offer</p>
+      <div className='flex mt-14 justify-center gap-3 items-center mb-36'>
+        <Explore src={pics1} alt="feature icon" title="Features" />
+        <Explore src={pics2} alt="template icon" title="Template gallery" />
+        <Explore src={pics3} alt="productivity icon" title="Productivity quiz" />
+        <Explore src={pics4} alt="extension icon" title="Extension gallery" />
+        <Explore src={pics5} alt="inspiration icon" title="Inspiration hub" />
+      </div>
+
+      <div className='flex justify-between mx-20 my-20'>
+        <div className='mt-12'>
+          <FeatureSection
+          title="In it for the long haul"
+          subtitle={
+           <>
+           A task manager you
+             <br />
+             can trust for life
+           </>
+         }
+         discription={
+           <>
+           We’ve been building Todoist for 16 years and 361<br/>
+           days. Rest assured that we’ll never sell out to the<br/>
+           highest bidder.
+
+           <p className='text-blue-600 pt-8'>Read about our long-term mission</p>
+           </>
+           
+          }
+      />
+    
+       </div>
+          <div className='w-[550px] h-64 slide relative '>
+           
+        <SlickCarousel/>
+        
+        </div>
+      </div>
+
+      <div className='mt-28 text-center bg-[#fff5ee] mix-blend-screen pt-20 pb-28'>
+        <h1 className=' font-bold text-[40px] leading-[50px] mb-8'>Gain calmness and clarity with the<br/>world’s most beloved productivity app</h1>
+      
+      <p className=' text-xl font-semibold text-gray-600 mb-6'>337,000+ ★★★★★ reviews on Google Play and App Store</p>
+      <Button/>
+      <p className='text-lg text-gray-600  cursor-pointer p-5'>Download apps</p>
+      </div>
+      <Footer/>
     </>
   )
 }

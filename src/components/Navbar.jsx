@@ -2,8 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import todoistLogo from '../images/todoist.png';
 import Button from '../reusables/Button';
+import { useLocation } from 'react-router-dom';
+import TodoistLogo from '../reusables/TodoistLogo';
 
 const Navbar = () => {
+
+
+    
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -19,17 +24,18 @@ const Navbar = () => {
     };
   }, []);
 
+
+
+
+
+
+  // Render the Navbar for all other pages
   return (
     <div className={`fixed top-0 w-full bg-white z-10 ${isScrolled ? '' : ''}`}>
       <div className="flex py-4 items-center justify-between mx-6">
-        <div className="flex gap-3">
-          <img src={todoistLogo} alt="todoist icon" className="w-8 h-8" />
-          <Link to="/" className="text-red-600 font-bold text-2xl">
-            todoist
-          </Link>
-        </div>
+        <TodoistLogo/>
 
-        <div className="flex gap-2 items-center font-semibold text-gray-800 text-lg">
+        <div className="flex gap-2 items-center font-[500] text-gray-800 text-lg">
           <NavLink to="/features">Features</NavLink>
           <NavLink to="/forteams">For Teams</NavLink>
           <NavLink to="/resources">Resources</NavLink>
@@ -37,7 +43,7 @@ const Navbar = () => {
 
           <Divider />
 
-          <button className="hover:bg-gray-100 p-2 rounded-lg">Log in</button>
+          <button className="hover:bg-gray-100 p-2 rounded-lg"><NavLink to="/login">Log in</NavLink></button>
           <Button />
         </div>
       </div>

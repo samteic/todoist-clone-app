@@ -4,7 +4,7 @@ import 'react-vertical-timeline-component/style.min.css';
 
 const VerticalComponent = () => {
   return (
-    <div>
+    <div className='sticky'>
         <VerticalTimeline>
   <VerticalTimelineElement
     className="vertical-timeline-element--work"
